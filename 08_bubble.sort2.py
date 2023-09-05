@@ -8,6 +8,9 @@ def bubble_sort(lista):
     o segundo for MENOR que o primeiro. Efetua tantas
     passadas quanto necessárias, até que, na última delas,
     nenhuma troca tenha sido realizada.
+
+    ESTÁ VERSÃO TEM UMA PEQUENA OTIMIZAÇÃO QUE VAI DIMINUINDO 
+    A QUANTIDADE DE COMPARAÇÕES A CADA PASSADA
     """
 
     # Usando as variaveis globais
@@ -24,8 +27,9 @@ def bubble_sort(lista):
         trocou = False
 
         # Percurso da lista, do primeiro ao PENÚLTIMO elemento
-        # com acesso a cada posição 
-        for pos in range(len(lista) - 1):
+        # com acesso a cada posição NA PRIMEIRA PASSADA
+        # Nas demais passadas, o percurso vai diminindo uma posição
+        for pos in range(len(lista) - passd):
           
           # Se o valor que está na frente na lista (pos + 1)
           # for MENOR do que aquele que está atrás (pos),
@@ -43,13 +47,13 @@ def bubble_sort(lista):
         
 ##########################################################################
 
-# nums = [7, 5, 9, 0, 3, 4, 8, 1, 6, 2]
+nums = [7, 5, 9, 0, 3, 4, 8, 1, 6, 2]
 
 # Melhor caso
 # nums = [0, 1, 2, 3, 4, 5, 6, 7, 9, 9]
 
 # Pior caso
-nums = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+# nums = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
 print("ANTES:", nums)
 bubble_sort(nums)
 print("DEPOIS:", nums)
@@ -58,16 +62,16 @@ print(F"Comparações: {comps}, trocas: {trocas}, passadas: {passd}")
 ############################################################################
 # TESTE COM O ARQUIVO DE 1M+ NOMES
 
-import sys
-sys.dont_write_bytecode = True #impede criação da cache
+# import sys
+# sys.dont_write_bytecode = True #impede criação da cache
 
-from data.nomes_desord import nomes
-from time import time
+# from data.nomes_desord import nomes
+# from time import time
 
-nomes10000 = nomes[:10000]
+# nomes100000 = nomes[:100000]
 
-hora_ini = time()
-bubble_sort (nomes10000)
-hora_fim = time()
-print(nomes10000) # Lista após ordenação
-print(f'Tempo gasto: {(hora_fim - hora_ini)*1000} ms\n')
+# hora_ini = time()
+# bubble_sort (nomes100000)
+# hora_fim = time()
+# print(nomes100000) # Lista após ordenação
+# print(f'Tempo gasto: {(hora_fim - hora_ini) * 1000}ms\n')
